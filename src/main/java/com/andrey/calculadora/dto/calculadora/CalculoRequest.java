@@ -1,4 +1,4 @@
-package com.andrey.calculadora.dto;
+package com.andrey.calculadora.dto.calculadora;
 
 import com.andrey.calculadora.enums.Operacao;
 import jakarta.validation.constraints.NotNull;
