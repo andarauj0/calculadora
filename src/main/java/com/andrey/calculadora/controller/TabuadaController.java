@@ -1,7 +1,8 @@
 package com.andrey.calculadora.controller;
 
-import com.andrey.calculadora.dto.calculadora.CalculoRequest;
-import com.andrey.calculadora.service.CalculoService;
+
+import com.andrey.calculadora.dto.tabuada.TabuadaRequest;
+import com.andrey.calculadora.service.TabuadaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,20 +16,19 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-public class CalculoController {
+public class TabuadaController {
 
-    private final CalculoService service;
+    private final TabuadaService service;
 
-    public CalculoController(CalculoService service) {
+    public TabuadaController(TabuadaService service) {
         this.service = service;
     }
 
-
-    @PostMapping("/calculo")
-    public ResponseEntity<?> calcular(
-            @Valid @RequestBody CalculoRequest request)
+    @GetMapping("/tabuada")
+    public ResponseEntity<?> tabuada(
+            @Valid @ModelAttribute TabuadaRequest calculo)
     {
-        return ResponseEntity.ok(service.calcular(request.getValor1(), request.getValor2(), request.getOperacao()));
+        return ResponseEntity.ok(service.tabuada(calculo));
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> errorTreatment(MethodArgumentNotValidException ex) {

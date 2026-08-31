@@ -1,8 +1,8 @@
 package com.andrey.calculadora.service;
 
 
-import com.andrey.calculadora.dto.CalculoRequest;
-import com.andrey.calculadora.dto.CalculoResponse;
+import com.andrey.calculadora.dto.calculadora.CalculoResponse;
+import com.andrey.calculadora.enums.Operacao;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,13 +11,13 @@ public class CalculoService {
 
 
 
-    public CalculoResponse calcular( CalculoRequest calculo) {
-        double resultado = switch (calculo.getOperacao()) {
+    public CalculoResponse calcular(double valor1, double valor2, Operacao operacao){
+        double resultado = switch (operacao) {
 
-            case SOMAR -> (calculo.getValor1() + calculo.getValor2());
-            case DIVIDIR -> (calculo.getValor1() / calculo.getValor2());
-            case SUBTRAIR -> (calculo.getValor1() - calculo.getValor2());
-            case MULTIPLICAR -> (calculo.getValor1() * calculo.getValor2());
+            case SOMAR -> (valor1 + valor2);
+            case DIVIDIR -> (valor1 / valor2);
+            case SUBTRAIR -> (valor1 - valor2);
+            case MULTIPLICAR -> (valor1 * valor2);
         };
         CalculoResponse response = new CalculoResponse();
         response.setResultado(resultado);

@@ -1,4 +1,4 @@
-package com.andrey.calculadora.dto;
+package com.andrey.calculadora.dto.calculadora;
 
 public class CalculoResponse {
 
